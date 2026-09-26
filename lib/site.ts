@@ -1,3 +1,15 @@
+function normalizeOrigin(value: string | undefined): string | undefined {
+  if (!value?.trim()) return undefined;
+  const url = value.trim();
+  return new URL(url.includes("://") ? url : `https://${url}`).origin;
+}
+
+const siteOrigin = normalizeOrigin(
+  process.env.NEXT_PUBLIC_SITE_URL ||
+    process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL ||
+    process.env.NEXT_PUBLIC_VERCEL_URL,
+);
+
 export const site = {
   name: "Aditya Raj",
   title: "Aditya Raj | Full-Stack Developer",
@@ -6,5 +18,5 @@ export const site = {
   github: "https://github.com/Adityaraj-r",
   linkedin: "https://linkedin.com/in/aditya-raj-725708325",
   resume: "/resume.pdf",
-  origin: process.env.NEXT_PUBLIC_SITE_URL,
+  origin: siteOrigin,
 };

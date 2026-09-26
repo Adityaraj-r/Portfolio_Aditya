@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { JsonLd } from "@/components/json-ld";
 import { Tags } from "@/components/ui";
 import { projects } from "@/data/projects";
+import { site } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -15,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((item) => item.slug === slug);
   return project
-    ? { title: `${project.name} | Aditya Raj`, description: project.description, alternates: { canonical: `/projects/${slug}` } }
+    ? { title: `${project.name} | Aditya Raj`, description: project.description, alternates: { canonical: `/projects/${slug}` }, openGraph: { type: "website", title: `${project.name} | Aditya Raj`, description: project.description, images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${project.name} — Aditya Raj` }] }, twitter: { card: "summary_large_image", title: `${project.name} | Aditya Raj`, description: project.description, images: ["/opengraph-image"] } }
     : { title: "Project not found | Aditya Raj" };
 }
 
@@ -25,9 +27,19 @@ export default async function ProjectPage({ params }: Props) {
   const project = projects[projectIndex];
   if (!project) notFound();
   const nextProject = projects[(projectIndex + 1) % projects.length];
+  const schemaOrigin = site.origin ?? "http://localhost:3000";
+  const projectSchema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": `${schemaOrigin}/projects/${slug}#software`,
+    name: project.name,
+    description: project.summary,
+    creator: { "@id": `${schemaOrigin}/#person` },
+  };
 
   return (
     <main id="main-content" className="subpage case-study">
+      <JsonLd data={projectSchema} />
       <div className="container">
         <Link className="back-link" href="/#projects"><ArrowLeft size={15} /> All projects</Link>
         <header className="case-hero">
