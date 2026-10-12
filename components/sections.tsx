@@ -2,6 +2,7 @@ import { ArrowRight, ArrowUpRight, Download, Github, Linkedin, Mail } from "luci
 import Link from "next/link";
 import { Reveal } from "@/components/animations";
 import { HeroVisual } from "@/components/hero-visual";
+import { PresentationModeSwitch } from "@/components/presentation-mode";
 import { certifications } from "@/data/certifications";
 import { experience } from "@/data/experience";
 import { projects } from "@/data/projects";
@@ -18,11 +19,13 @@ function Tags({ items }: { items: readonly string[] }) {
 
 export function Hero() {
   return <section id="home" className="hero section-anchor"><div className="container hero-inner">
-    <Reveal className="hero-content"><p className="eyebrow hero-eyebrow"><span className="eyebrow-mark" />FULL-STACK DEVELOPER <span className="eyebrow-divider">·</span> SOFTWARE ENGINEERING INTERN</p>
+    <Reveal className="hero-content"><p className="eyebrow hero-eyebrow"><span className="eyebrow-mark" />FULL-STACK &amp; APPLIED AI ENGINEERING <span className="eyebrow-divider">·</span> COMPUTER ENGINEERING UNDERGRADUATE</p>
       <h1>Aditya Raj<span className="accent">.</span></h1>
-      <p className="hero-lede">Building scalable web applications and AI-powered systems.</p>
-      <p className="hero-copy">I’m a Computer Engineering student with hands-on Full-Stack Development experience. I recently completed a Full-Stack Developer internship at Indux Technology. I build React applications, backend services, REST APIs, and database-driven workflows, with additional experience in deep-learning-based audio classification.</p>
+      <p className="hero-lede">Full-stack systems, thoughtful backend engineering, and applied AI.</p>
+      <p className="hero-copy">I’m a Computer Engineering undergraduate with hands-on experience building React applications, backend services, REST APIs, and database-driven workflows. My project work also includes deep-learning-based audio classification.</p>
+      <ul className="hero-credentials"><li><strong>8.79</strong> / 10 CGPA</li><li>NPTEL Elite Certification: Introduction to Machine Learning · IIT Madras · <strong>Top 1%</strong></li></ul>
       <div className="hero-actions"><a className="button button-primary" href="#projects">View Projects <ArrowRight size={16} /></a><a className="button button-secondary" href={site.resume} download><Download size={15} /> Download Resume</a></div>
+      <PresentationModeSwitch />
       <div className="hero-links"><a href={site.github} target="_blank" rel="noreferrer"><Github size={16} /> GitHub <ArrowUpRight size={12} /></a><a href={site.linkedin} target="_blank" rel="noreferrer"><Linkedin size={16} /> LinkedIn <ArrowUpRight size={12} /></a><a href={site.resume} target="_blank" rel="noreferrer"><Download size={15} /> View Resume</a></div>
     </Reveal>
     <Reveal className="hero-recent-experience" delay={0.08}>
@@ -31,7 +34,7 @@ export function Hero() {
         <p className="recent-experience-label"><span className="eyebrow-mark" />RECENT EXPERIENCE</p>
         <h2>Full-Stack Developer Intern</h2>
         <p className="recent-experience-company">Indux Technology</p>
-        <p className="recent-experience-date">May 2026 — Sep 2026</p>
+        <p className="recent-experience-date">May 2026 — September 2026</p>
         <p className="recent-experience-stack">Node.js <span>·</span> Express.js<br />MongoDB <span>·</span> React<br />REST APIs</p>
       </article>
     </Reveal>
@@ -50,7 +53,7 @@ export function ExperienceSection() {
 export function ProjectsSection() {
   return <section id="projects" className="section section-anchor"><div className="container"><SectionHeading eyebrow="02 / SELECTED WORK" title="Projects with a purpose." intro="Two projects exploring full-stack application development and deep-learning-based audio classification." />
     <div className="project-list">{projects.map((project, index) => <Reveal key={project.slug} delay={index * 0.08}><article className={`project-card project-${project.slug}`}><div className="project-visual" aria-label={`${project.name} high-level system flow`}><div className="visual-topline"><span className="visual-dot" /><span className="visual-dot" /><span className="visual-dot" /><span className="visual-label">{project.slug.toUpperCase()} / SYSTEM FLOW</span></div><div className="visual-content"><span className="visual-kicker">{index === 0 ? "AUDIO CLASSIFICATION" : "REAL-TIME MESSAGING"}</span><div className="visual-diagram">{project.architecture.map((step, stepIndex) => <div className="diagram-step" key={step}><span>0{stepIndex + 1}</span><b>{step}</b></div>)}</div></div><span className="visual-note">HIGH-LEVEL SYSTEM FLOW</span></div>
-        <div className="project-info"><p className="eyebrow">FEATURED PROJECT · 0{index + 1}</p><h3>{project.name}<span className="accent">.</span></h3><p className="project-subtitle">{project.subtitle}</p><p className="project-description">{project.description}</p><Tags items={project.technologies} /><div className="project-actions"><a className="text-link" href={`/projects/${project.slug}`}>Explore case study <ArrowRight size={15} /></a>{project.github && <a className="icon-link" href={project.github} target="_blank" rel="noreferrer" aria-label={`${project.name} GitHub repository`}><Github size={18} /></a>}</div></div>
+        <div className="project-info"><p className="eyebrow">FEATURED PROJECT · 0{index + 1}</p><h3>{project.name}<span className="accent">.</span></h3><p className="project-subtitle">{project.subtitle}</p><p className="project-description">{project.description}</p><Tags items={project.technologies} /><details className="project-engineer-details"><summary>Engineering notes</summary><p>{project.summary}</p><p><strong>Problem:</strong> {project.problem}</p><p><strong>Approach:</strong> {project.solution}</p><p><strong>Architecture:</strong></p><ul>{project.architecture.map((step) => <li key={step}>{step}</li>)}</ul><p><strong>Key decisions:</strong></p><ul>{project.decisions.map((decision) => <li key={decision}>{decision}</li>)}</ul><a className="text-link" href={`/projects/${project.slug}`}>Open full case study <ArrowRight size={15} /></a></details><div className="project-actions"><a className="text-link" href={`/projects/${project.slug}`}>Explore case study <ArrowRight size={15} /></a>{project.github && <a className="icon-link" href={project.github} target="_blank" rel="noreferrer" aria-label={`${project.name} GitHub repository`}><Github size={18} /></a>}</div></div>
       </article></Reveal>)}</div><div className="projects-more"><Link className="text-link" href="/projects">View all projects <ArrowRight size={15} /></Link></div>
   </div></section>;
 }
@@ -64,7 +67,7 @@ export function CertificationsSection() {
 }
 
 export function EducationSection() {
-  return <section id="education" className="section section-alt section-anchor"><div className="container"><SectionHeading eyebrow="05 / EDUCATION" title="Academic foundation." /><div className="education-grid"><Reveal><article className="education-card education-primary"><p className="eyebrow">2023 — 2027</p><h3>RMD Sinhgad Technical Institute</h3><p className="education-place">Pune, Maharashtra</p><div className="education-bottom"><span>B.E. in Computer Engineering</span><strong>8.7<span> / 10 CGPA</span></strong></div></article></Reveal><Reveal delay={0.08}><article className="education-card"><p className="eyebrow">HIGHER SECONDARY</p><h3>Shakti Shanti Academy</h3><div className="education-bottom"><span>12th</span><strong>82.6<span>%</span></strong></div></article></Reveal></div></div></section>;
+  return <section id="education" className="section section-alt section-anchor"><div className="container"><SectionHeading eyebrow="05 / EDUCATION" title="Academic foundation." /><div className="education-grid"><Reveal><article className="education-card education-primary"><p className="eyebrow">2023 — 2027</p><h3>RMD Sinhgad Technical Institute</h3><p className="education-place">Pune, Maharashtra</p><div className="education-bottom"><span>B.E. in Computer Engineering</span><strong>8.79<span> / 10 CGPA</span></strong></div></article></Reveal><Reveal delay={0.08}><article className="education-card"><p className="eyebrow">HIGHER SECONDARY</p><h3>Shakti Shanti Academy</h3><div className="education-bottom"><span>12th</span><strong>82.6<span>%</span></strong></div></article></Reveal></div></div></section>;
 }
 
 export function AboutSection() {

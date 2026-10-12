@@ -3,6 +3,8 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { JsonLd } from "@/components/json-ld";
+import { MobileActionBar } from "@/components/mobile-action-bar";
+import { PresentationModeProvider } from "@/components/presentation-mode";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -41,5 +43,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     ],
   };
 
-  return <html lang="en" data-scroll-behavior="smooth"><body><JsonLd data={structuredData} /><a className="skip-link" href="#main-content">Skip to content</a><Navbar />{children}<Footer /></body></html>;
+  return <html lang="en" data-scroll-behavior="smooth"><body><JsonLd data={structuredData} /><a className="skip-link" href="#main-content">Skip to content</a><PresentationModeProvider><Navbar />{children}<Footer /><MobileActionBar /></PresentationModeProvider></body></html>;
 }

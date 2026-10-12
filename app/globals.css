@@ -16,12 +16,12 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 86px; overflow-x: clip; }
+html { scroll-behavior: smooth; scroll-padding-top: 86px; }
 body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 body::before { position: fixed; inset: 0; z-index: -1; pointer-events: none; content: ""; opacity: .16; background-image: linear-gradient(rgba(132,158,175,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(132,158,175,.06) 1px, transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(to bottom, black, transparent 80%); }
 a { color: inherit; text-decoration: none; }
 button, a { -webkit-tap-highlight-color: transparent; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
 ::selection { background: rgba(100,210,176,.27); color: var(--text); }
 .container { width: min(var(--content-width), calc(100% - 48px)); margin-inline: auto; }
 .section { padding-block: var(--section-space); position: relative; }
@@ -46,6 +46,26 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .button-secondary:hover, .button-outline:hover { border-color: var(--accent); color: var(--accent); }
 .button-small { min-height: 36px; padding-inline: 13px; font-size: 12px; }
 .menu-toggle, .mobile-menu { display: none; }
+.portfolio-shell { min-width: 0; }
+.presentation-mode { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; width: fit-content; margin-top: 20px; padding: 4px; border: 1px solid var(--border); border-radius: 9px; background: rgba(17,24,33,.66); }
+.presentation-mode[hidden] { display: none; }
+.presentation-mode-label { padding-inline: 9px 5px; color: var(--muted); font-size: 11px; }
+.presentation-mode button { min-height: 48px; padding: 0 13px; border: 1px solid transparent; border-radius: 6px; background: transparent; color: var(--text-secondary); font: inherit; font-size: 12px; cursor: pointer; }
+.presentation-mode button[aria-pressed="true"] { border-color: rgba(100,210,176,.3); background: rgba(100,210,176,.1); color: var(--accent); }
+.presentation-mode button:hover { color: var(--text); }
+.project-engineer-details { display: none; margin-top: 18px; padding: 13px 14px; border: 1px solid var(--border); border-radius: 8px; background: rgba(11,15,20,.38); }
+.portfolio-shell[data-presentation-mode="engineer"] .project-engineer-details { display: block; }
+.project-engineer-details summary { min-height: 48px; padding-block: 10px; color: var(--accent); font-size: 12px; font-weight: 550; cursor: pointer; }
+.project-engineer-details[open] summary { margin-bottom: 10px; }
+.project-engineer-details p, .project-engineer-details li { color: var(--text-secondary); font-size: 12px; line-height: 1.7; }
+.project-engineer-details p { margin: 8px 0; }
+.project-engineer-details ul { margin: 5px 0 13px; padding-left: 18px; }
+.project-engineer-details li::marker { color: var(--accent); }
+.project-engineer-details .text-link { min-height: 40px; }
+.hero-credentials { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 18px 0 0; padding: 0; list-style: none; color: var(--text-secondary); font-size: 12px; }
+.hero-credentials strong { color: var(--accent); font-weight: 650; }
+.hero-credentials li + li { padding-left: 16px; border-left: 1px solid var(--border); }
+.mobile-action-bar { display: none; }
 .hero { min-height: min(790px, calc(100svh - 72px)); display: flex; align-items: center; overflow: hidden; padding-block: 68px 108px; background: radial-gradient(ellipse at 83% 8%, rgba(100,210,176,.055), transparent 42%); }
 .hero-inner { position: relative; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(245px, .75fr); align-items: center; gap: clamp(32px, 6vw, 82px); }
 .hero-content { max-width: 680px; }
@@ -225,7 +245,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 @media (max-width: 900px) {
   :root { --section-space: 80px; }
   .desktop-nav { display: none; }
-  .menu-toggle { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text); }
+  .menu-toggle { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text); }
   .mobile-menu:not([hidden]) { position: absolute; top: calc(100% + 1px); left: 0; right: 0; display: flex; flex-direction: column; padding: 12px 24px 22px; background: rgba(11,15,20,.98); border-bottom: 1px solid var(--border); box-shadow: 0 18px 30px rgba(0,0,0,.18); }
   .mobile-menu > a { padding: 11px 0; border-bottom: 1px solid rgba(38,50,65,.6); color: var(--text-secondary); font-size: 14px; }
   .mobile-menu-bottom { display: flex; flex-wrap: wrap; align-items: center; gap: 17px; padding-top: 16px; }
@@ -306,6 +326,14 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   .case-content section { margin-bottom: 40px; }
   .case-content h2 { font-size: 24px; }
   .next-project { margin-top: 23px; }
+}
+@media (max-width: 767px) {
+  html { scroll-padding-bottom: calc(78px + env(safe-area-inset-bottom)); }
+  body { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+  .mobile-action-bar { position: fixed; z-index: 60; inset: auto 0 0; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; padding: 8px 16px calc(8px + env(safe-area-inset-bottom)); border-top: 1px solid rgba(38,50,65,.9); background: rgba(11,15,20,.94); backdrop-filter: blur(16px); }
+  .mobile-action-bar a { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--border); border-radius: 8px; background: rgba(21,30,41,.86); color: var(--text); font-size: 13px; font-weight: 550; }
+  .mobile-action-bar a:last-child { border-color: transparent; background: var(--accent); color: #0b1513; }
+  .mobile-action-bar a:active { transform: translateY(1px); }
 }
 @media (max-width: 360px) {
   .container { width: calc(100% - 30px); }
