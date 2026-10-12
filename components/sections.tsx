@@ -1,6 +1,7 @@
-import { ArrowDownRight, ArrowRight, ArrowUpRight, BriefcaseBusiness, Download, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { Reveal } from "@/components/animations";
+import { HeroVisual } from "@/components/hero-visual";
 import { certifications } from "@/data/certifications";
 import { experience } from "@/data/experience";
 import { projects } from "@/data/projects";
@@ -17,20 +18,32 @@ function Tags({ items }: { items: readonly string[] }) {
 
 export function Hero() {
   return <section id="home" className="hero section-anchor"><div className="container hero-inner">
-    <Reveal><p className="eyebrow hero-eyebrow"><span className="eyebrow-mark" />FULL-STACK DEVELOPER <span className="eyebrow-divider">/</span> COMPUTER ENGINEERING STUDENT</p>
+    <Reveal className="hero-content"><p className="eyebrow hero-eyebrow"><span className="eyebrow-mark" />FULL-STACK DEVELOPER <span className="eyebrow-divider">·</span> SOFTWARE ENGINEERING INTERN</p>
       <h1>Aditya Raj<span className="accent">.</span></h1>
-      <p className="hero-lede">Building web applications, REST APIs, and an audio classification system.</p>
-      <p className="hero-copy">I’m studying Computer Engineering at RMD Sinhgad Technical Institute, Pune. My internship and project work spans React applications, backend services, authentication, database workflows, and deep-learning-based audio classification.</p>
-      <div className="hero-actions"><a className="button button-primary" href="#projects">View Projects <ArrowDownRight size={16} /></a><a className="button button-secondary" href="#contact">Contact Me <ArrowRight size={16} /></a></div>
+      <p className="hero-lede">Building scalable web applications and AI-powered systems.</p>
+      <p className="hero-copy">I’m a Computer Engineering student with hands-on Full-Stack Development experience. I recently completed a Full-Stack Developer internship at Indux Technology. I build React applications, backend services, REST APIs, and database-driven workflows, with additional experience in deep-learning-based audio classification.</p>
+      <div className="hero-actions"><a className="button button-primary" href="#projects">View Projects <ArrowRight size={16} /></a><a className="button button-secondary" href={site.resume} download><Download size={15} /> Download Resume</a></div>
       <div className="hero-links"><a href={site.github} target="_blank" rel="noreferrer"><Github size={16} /> GitHub <ArrowUpRight size={12} /></a><a href={site.linkedin} target="_blank" rel="noreferrer"><Linkedin size={16} /> LinkedIn <ArrowUpRight size={12} /></a><a href={site.resume} target="_blank" rel="noreferrer"><Download size={15} /> View Resume</a></div>
     </Reveal>
-    <div className="hero-index" aria-hidden="true"><span>01</span><i /><span>SCROLL TO EXPLORE</span></div>
+    <Reveal className="hero-recent-experience" delay={0.08}>
+      <HeroVisual />
+      <article className="recent-experience-card" aria-label="Recent experience">
+        <p className="recent-experience-label"><span className="eyebrow-mark" />RECENT EXPERIENCE</p>
+        <h2>Full-Stack Developer Intern</h2>
+        <p className="recent-experience-company">Indux Technology</p>
+        <p className="recent-experience-date">May 2026 — Sep 2026</p>
+        <p className="recent-experience-stack">Node.js <span>·</span> Express.js<br />MongoDB <span>·</span> React<br />REST APIs</p>
+      </article>
+    </Reveal>
   </div></section>;
 }
 
 export function ExperienceSection() {
-  return <section id="experience" className="section section-alt section-anchor"><div className="container"><SectionHeading eyebrow="01 / EXPERIENCE" title="Learning by building." intro="Internship experience across enterprise application features, APIs, and frontend workflows." />
-    <div className="experience-list">{experience.map((job, index) => <Reveal key={job.company} delay={index * 0.08}><article className="experience-card"><div className="experience-top"><div className="experience-marker"><BriefcaseBusiness size={18} /></div><div className="experience-title"><p className="experience-company">{job.company}</p><h3>{job.role}</h3></div><time>{job.duration}</time></div><div className="experience-body"><p className="experience-summary">{job.summary}</p><ul className="achievement-list">{job.highlights.map((item) => <li key={item}>{item}</li>)}</ul><Tags items={job.technologies} /></div></article></Reveal>)}</div>
+  return <section id="experience" className="section section-alt section-anchor"><div className="container"><SectionHeading eyebrow="01 / EXPERIENCE" title="Experience." intro="Professional experience building full-stack applications, backend services, and API-driven systems." />
+    <div className="experience-list">{experience.map((job, index) => <Reveal key={job.company} delay={index * 0.08} className="experience-reveal"><article className="experience-card">
+      <div className="experience-meta"><span className="experience-number">0{index + 1}</span><time>{job.duration}</time></div>
+      <div className="experience-main"><p className="experience-company">{job.company}</p><h3>{job.role}</h3><p className="experience-summary">{job.summary}</p><ul className="achievement-list">{job.highlights.map((item) => <li key={item}>{item}</li>)}</ul><Tags items={job.technologies} /></div>
+    </article></Reveal>)}</div>
   </div></section>;
 }
 

@@ -2,8 +2,8 @@ export const experience = [
   {
     company: "Indux Technology",
     role: "Full Stack Developer Intern",
-    duration: "May 2026 – Present",
-    summary: "Building enterprise HRMS functionality across backend services, database operations, and React workflows.",
+    duration: "May 2026 – Sep 2026",
+    summary: "Built enterprise HRMS functionality across backend services, database operations, and React workflows.",
     highlights: [
       "Engineered backend services and RESTful APIs using Node.js, Express.js, and MongoDB for enterprise HRMS modules.",
       "Optimized API queries and database operations while resolving 30+ system and functional issues, improving application reliability and performance.",
