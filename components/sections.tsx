@@ -20,7 +20,7 @@ function Tags({ items }: { items: readonly string[] }) {
 
 export function Hero() {
   return <section id="home" className="hero section-anchor"><div className="container">
-    <div className="hero-topline"><span><i /> OPEN TO SOFTWARE ENGINEERING OPPORTUNITIES</span><span>PUNE, INDIA ↗</span></div>
+    <div className="hero-topline"><span><i /> OPEN TO SOFTWARE ENGINEERING OPPORTUNITIES</span></div>
     <div className="hero-inner">
       <Reveal className="hero-content"><p className="eyebrow hero-eyebrow">FULL-STACK DEVELOPER / COMPUTER ENGINEERING</p>
         <h1>Aditya Raj</h1>

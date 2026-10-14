@@ -28,7 +28,7 @@ export function Navbar() {
   return (
     <header className="site-header">
       <nav className="nav container" aria-label="Main navigation" onKeyDown={(event) => { if (event.key === "Escape" && open) { setOpen(false); menuButton.current?.focus(); } }}>
-        <Link className="wordmark" href="/#home" onClick={() => setOpen(false)} aria-label="Aditya Raj, home"><span className="wordmark-icon" aria-hidden="true">AR</span>aditya raj<span className="wordmark-role"> / developer</span></Link>
+        <Link className="wordmark" href="/#home" onClick={() => setOpen(false)} aria-label="Aditya Raj, home"><span className="wordmark-icon" aria-hidden="true">AR</span>Aditya Raj<span className="wordmark-role"> / developer</span></Link>
         <div className="nav-links desktop-nav">
           {links.map(([label, href]) => <a key={href} href={`/${href}`} aria-current={(pathname === "/" && active === href.slice(1)) || (pathname.startsWith("/projects") && href === "#projects") ? "location" : undefined}>{label}</a>)}
         </div>
