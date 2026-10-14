@@ -30,7 +30,7 @@ The three supplied TalentFlow visuals are integrated as product showcase assets.
 
 `app/actions/applications.actions.js` and `app/actions/lifecycle.actions.js` import `@/lib/placement/lifecycle-rules.mjs`, but that file is absent from the inspected recursive repository tree. A direct raw request at the inspected commit returned HTTP 404. Consequently, interview/offer/application workflow code cannot be described as runtime verified, and the portfolio makes no claim of a functioning public deployment. Fixing that separate repository is outside this redesign.
 
-No Placement Portal screenshot was supplied, so its project record has an empty image list and the interface explicitly identifies that absence. No deployment URL, usage metrics or performance benchmark was inferred.
+A College Placement Portal dashboard visual was supplied after this source audit and is now included in the case-study gallery. It is illustrative artwork, not evidence of runtime behavior or metrics. No deployment URL, usage metrics or performance benchmark was inferred.
 
 ## Existing content preserved
 

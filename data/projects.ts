@@ -183,7 +183,7 @@ export const projects: Project[] = [
     technologies: ["Next.js", "React.js", "JavaScript", "Supabase", "PostgreSQL", "Tailwind CSS", "Gemini"],
     images: [
       {
-        src: "/projects/placement-portal-dashboard.png",
+        src: "/projects/placement-portal-dashboard.webp",
         alt: "College Placement Portal dashboard overview with student, company, placement drive, and application management screens.",
         width: 1672,
         height: 941,
