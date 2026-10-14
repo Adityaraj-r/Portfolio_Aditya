@@ -1,11 +1,12 @@
 # Aditya Raj Portfolio
 
-A recruiter-focused portfolio for Aditya Raj, Computer Engineering student and Full-Stack Developer. It presents internship experience, two project case studies, skills, certifications, education, and direct contact links.
+A recruiter-focused portfolio for Aditya Raj, Computer Engineering student and Full-Stack Developer. It presents internship experience, five project case studies, skills, certifications, education, and direct contact links in a predominantly black and mint design.
 
 ## Features
 
 - Responsive homepage with experience, projects, skills, certifications, education, about, and contact sections
-- Project index and statically generated case study pages for EchoGuard and SyncSpace
+- Image-led project index and statically generated case study pages for TalentFlow HRMS, DocAI Brain, EchoGuard, SyncSpace, and Placement Portal
+- Nine optimized local project visuals, accessible galleries, and recruiter/engineer presentation modes
 - Resume view and download links
 - Open Graph/Twitter social preview image, favicon, canonical metadata, JSON-LD, `robots.txt`, and `sitemap.xml`
 - Reduced-motion support, keyboard-accessible mobile navigation, and visible focus states
@@ -28,7 +29,7 @@ app/                 Routes, metadata, global styles, generated OG image
 components/          Navigation, page sections, footer, motion and JSON-LD
 data/                Project, experience, certification and skill content
 lib/                 Site profile and canonical origin configuration
-public/               Resume PDF and static public assets
+public/              Resume PDF and static public assets
 ```
 
 ## Local development
@@ -72,9 +73,13 @@ Vercel’s Git integration creates preview deployments for changes and productio
 
 ## Content/assets to supply later
 
-- Project repository and live-demo URLs, if available
-- Authentic project screenshots, if available
+- A Placement Portal screenshot (its current preview is explicitly labeled as a system overview)
+- Confirmed live-demo URLs for TalentFlow HRMS and Placement Portal, if deployed
 - Certification credential URLs, if available
 - A confirmed public domain (or set `NEXT_PUBLIC_SITE_URL` after choosing one)
 
-The project diagrams are high-level flows based on the resume, not fabricated screenshots. No analytics are included; for this static portfolio, avoiding an analytics script keeps the page lighter and avoids unnecessary tracking.
+The nine supplied product visuals are optimized WebP assets under `public/projects/`; their complete compositions and intrinsic dimensions are preserved. They appear on project cards, the index, and interactive case-study galleries. Embedded sample figures are illustrative rather than measured project results. See [the image inventory](docs/project-assets.md) for provenance and sizes.
+
+TalentFlow and Placement Portal content is based on source inspection, with receipts in [the source audit](docs/new-project-source-audit.md). Source inspection does not establish deployed runtime behavior. SyncSpace’s MongoDB and Stream architecture differs from the Supabase description in the supplied resume, which is preserved. No analytics or application backend were added to the portfolio.
+
+See [the redesign audit](docs/redesign-audit.md) and [implementation report](docs/redesign-report.md) for this refactor. The older [portfolio direction research](docs/portfolio-direction.md) retains its historical proposals for live project exhibits; those backend exhibits are not functionality shipped in this static portfolio.

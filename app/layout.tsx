@@ -13,11 +13,11 @@ export const metadata: Metadata = {
   description: site.description,
   keywords: ["Aditya Raj", "Full-Stack Developer", "Software Engineer", "React", "Node.js", "REST APIs", "Audio Classification"],
   alternates: { canonical: "/" },
-  openGraph: { type: "website", title: "Aditya Raj — Full-Stack Developer", description: "Explore Aditya Raj’s experience and projects in full-stack development and audio classification.", url: site.origin ?? "http://localhost:3000", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Aditya Raj — Full-Stack Developer" }], siteName: "Aditya Raj Portfolio" },
-  twitter: { card: "summary_large_image", title: "Aditya Raj — Full-Stack Developer", description: "Explore Aditya Raj’s experience and projects in full-stack development and audio classification.", images: ["/opengraph-image"] },
+  openGraph: { type: "website", title: "Aditya Raj — Full-Stack Developer", description: site.description, url: site.origin ?? "http://localhost:3000", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Aditya Raj — Full-Stack Developer" }], siteName: "Aditya Raj Portfolio" },
+  twitter: { card: "summary_large_image", title: "Aditya Raj — Full-Stack Developer", description: site.description, images: ["/opengraph-image"] },
 };
 
-export const viewport: Viewport = { themeColor: "#0B0F14", colorScheme: "dark" };
+export const viewport: Viewport = { themeColor: "#08090B", colorScheme: "dark" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const schemaOrigin = site.origin ?? "http://localhost:3000";
