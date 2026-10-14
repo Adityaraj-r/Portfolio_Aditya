@@ -9,6 +9,7 @@ import { skillGroups } from "@/data/skills";
 import { site } from "@/lib/site";
 import { ProjectCard } from "@/components/project-card";
 import { ProjectExpansion } from "@/components/project-expansion";
+import { ContactForm } from "@/components/contact-form";
 
 function SectionHeading({ eyebrow, title, intro }: { eyebrow: string; title: string; intro?: string }) {
   return <div className="section-heading"><p className="eyebrow">{eyebrow}</p><h2>{title}</h2>{intro && <p className="section-intro">{intro}</p>}</div>;
@@ -97,5 +98,11 @@ export function AboutSection() {
 }
 
 export function ContactSection() {
-  return <section id="contact" className="section contact-section section-anchor"><div className="container"><Reveal><div className="contact-panel"><div><p className="eyebrow">07 / CONTACT</p><h2>Let’s build something<br />worth using<span className="accent">.</span></h2><p>I’m interested in software engineering and full-stack development opportunities. You can reach me by email or connect with me on LinkedIn.</p></div><div className="contact-actions"><a className="button button-primary" href={`mailto:${site.email}`}><Mail size={16} /> {site.email} <ArrowUpRight size={15} /></a><a className="contact-link" href={site.linkedin} target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={14} /></a><a className="contact-link" href={site.github} target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={14} /></a><a className="contact-link" href={site.resume} download>Download Resume <Download size={14} /></a></div></div></Reveal></div></section>;
+  return <section id="contact" className="section contact-section section-anchor"><div className="container"><div className="contact-layout">
+    <Reveal className="contact-reveal"><aside className="contact-info-card"><p className="eyebrow">07 / CONTACT</p><h2>Contact Information</h2><p className="contact-intro">I’m open to discussing software engineering opportunities, full-stack development, and thoughtful technical collaborations. If you’re a recruiter or have a project in mind, I’d be glad to hear from you.</p>
+      <a className="contact-email" href={`mailto:${site.email}`}><span className="contact-method-icon"><Mail size={19} aria-hidden="true" /></span><span><small>EMAIL</small><strong>{site.email}</strong></span><ArrowUpRight size={16} aria-hidden="true" /></a>
+      <div className="contact-social-block"><p className="eyebrow">CONNECT</p><div className="contact-socials"><a href={site.github} target="_blank" rel="noreferrer" aria-label="GitHub profile" title="GitHub profile"><Github size={19} aria-hidden="true" /></a><a href={site.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn profile" title="LinkedIn profile"><Linkedin size={19} aria-hidden="true" /></a><a className="contact-resume" href={site.resume} target="_blank" rel="noreferrer">View resume <ArrowUpRight size={14} aria-hidden="true" /></a></div></div>
+    </aside></Reveal>
+    <Reveal className="contact-reveal" delay={0.06}><div className="contact-form-card"><h2>Send a Message</h2><p className="contact-form-intro">I’ll get back to you as soon as I can.</p><ContactForm /></div></Reveal>
+  </div></div></section>;
 }
