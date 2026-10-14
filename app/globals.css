@@ -214,6 +214,12 @@ img { max-width: 100%; }
 .cert-main h3 { margin: 0; font-size: 15px; font-weight: 500; }
 .cert-main p { font-size: 12px; color: var(--text-secondary); margin: 5px 0 0; }
 .cert-distinction { font: 11px "Consolas", monospace; color: var(--accent); padding: 8px 12px; border: 1px solid #69e6b13d; background: #69e6b107; border-radius: 5px; }
+.participation-section { margin-top: 28px; }
+.participation-heading { margin-bottom: 0; }
+.participation-item { display: grid; grid-template-columns: 28px minmax(0, 1fr); align-items: center; gap: 12px; padding: 21px 0; border-bottom: 1px solid var(--border); }
+.participation-icon { display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid #69e6b140; border-radius: 6px; color: var(--accent); }
+.participation-copy h3 { margin: 0; font-size: 14px; font-weight: 500; }
+.participation-copy p { margin: 5px 0 0; color: var(--text-secondary); font-size: 12px; line-height: 1.7; }
 .education-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; }
 .education-card { border: 1px solid var(--border); border-radius: 9px; padding: 28px; min-height: 205px; display: flex; flex-direction: column; background: #14171c55; height: 100%; }
 .education-card h3 { font-size: 21px; font-weight: 500; letter-spacing: -.03em; margin: 0; }
@@ -450,6 +456,7 @@ img { max-width: 100%; }
   .cert-item { grid-template-columns: 22px 1fr; gap: 10px; padding-block: 23px; }
   .cert-main h3 { font-size: 14px; }
   .cert-distinction { grid-column: 2; justify-self: start; font-size: 10px; margin-top: 5px; }
+  .participation-item { gap: 10px; }
   .education-grid { grid-template-columns: 1fr; gap: 18px; }
   .education-card { padding: 24px; min-height: 190px; }
   .education-bottom { flex-direction: row; align-items: center; }

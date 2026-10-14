@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowDownRight, ArrowUpRight, Download, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, ArrowDownRight, ArrowUpRight, CalendarDays, Download, Github, Linkedin, Mail } from "lucide-react";
 import { Reveal } from "@/components/animations";
 import { HeroVisual } from "@/components/hero-visual";
 import { PresentationModeSwitch } from "@/components/presentation-mode";
@@ -86,7 +86,9 @@ export function SkillsSection() {
 }
 
 export function CertificationsSection() {
-  return <section id="certifications" className="section section-anchor"><div className="container"><SectionHeading eyebrow="05 / ACHIEVEMENTS & CERTIFICATIONS" title="Always a student." /><div className="cert-list">{certifications.map((cert, index) => <Reveal key={cert.name} delay={index * 0.06}><article className="cert-item"><span className="cert-number">0{index + 1}</span><div className="cert-main"><h3>{cert.name}</h3><p>{cert.issuer}{cert.date ? ` · ${cert.date}` : ""}</p></div>{"distinction" in cert && <span className="cert-distinction">{cert.distinction}</span>}</article></Reveal>)}</div></div></section>;
+  return <section id="certifications" className="section section-anchor"><div className="container"><SectionHeading eyebrow="05 / ACHIEVEMENTS & CERTIFICATIONS" title="Always a student." /><div className="cert-list">{certifications.map((cert, index) => <Reveal key={cert.name} delay={index * 0.06}><article className="cert-item"><span className="cert-number">0{index + 1}</span><div className="cert-main"><h3>{cert.name}</h3><p>{cert.issuer}{cert.date ? ` · ${cert.date}` : ""}</p></div>{"distinction" in cert && <span className="cert-distinction">{cert.distinction}</span>}</article></Reveal>)}</div>
+    <div className="participation-section"><p className="eyebrow participation-heading">HACKATHON PARTICIPATION</p><Reveal delay={certifications.length * 0.06}><article className="participation-item"><span className="participation-icon" aria-hidden="true"><CalendarDays size={17} /></span><div className="participation-copy"><h3>National Level Project Competition 2026</h3><p>Participated as part of a team at VIT Pune, in association with IEEE Pune Section.</p></div></article></Reveal></div>
+  </div></section>;
 }
 
 export function EducationSection() {
