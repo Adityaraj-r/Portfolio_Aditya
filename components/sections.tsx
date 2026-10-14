@@ -96,7 +96,24 @@ export function EducationSection() {
 }
 
 export function AboutSection() {
-  return <section id="about" className="section section-anchor"><div className="container about-layout"><div><SectionHeading eyebrow="03 / ABOUT" title="Curiosity, with a practical streak." /></div><Reveal><div className="about-copy"><p>I’m pursuing a B.E. in Computer Engineering at RMD Sinhgad Technical Institute in Pune. My internship work has involved backend services, REST APIs, database operations, and reusable React components.</p><p>My projects include a PDF knowledge base powered by retrieval-augmented generation, a real-time messaging application, and a deep-learning-based audio classification system. I’m focused on software engineering and full-stack development.</p><span className="about-signoff">ADITYA RAJ <span>·</span> PUNE, INDIA</span></div></Reveal></div></section>;
+  const aboutProjects = projects.filter((project) => ["syncspace", "docai-brain", "echoguard"].includes(project.slug));
+
+  return <section id="about" className="section section-anchor"><div className="container about-layout">
+    <SectionHeading eyebrow="03 / ABOUT" title="From Learning to Building Real-World Software" intro="I’m Aditya Raj, a Computer Engineering undergraduate turning technical concepts into practical software." />
+    <Reveal className="about-reveal"><div className="about-overview">
+      <div className="about-copy"><p>Across two full-stack internships at Coding Savvy and Indux Technology, I’ve built reusable React components, integrated REST APIs, and worked with database-backed application workflows.</p><p>My projects explore real-time communication, document intelligence with retrieval-augmented generation, and deep-learning-based audio classification.</p></div>
+      <div className="about-journey" aria-label="Education and internship experience">
+        <article className="about-journey-item"><span className="about-period">2023 — 2027 <i>EDUCATION</i></span><div><h3>Computer Engineering</h3><p>RMD Sinhgad Technical Institute</p></div></article>
+        <article className="about-journey-item"><span className="about-period">2026 <i>INTERNSHIPS</i></span><div><h3>Full-Stack Development</h3><p>Coding Savvy · Jan–Feb<br />Indux Technology · May–Sep</p></div></article>
+      </div>
+    </div>
+    <div className="about-evidence-grid">
+      <div className="about-projects"><p className="eyebrow">PROJECT WORK</p><ul>{aboutProjects.map((project) => <li key={project.slug}><a href={project.github ?? project.demo} target="_blank" rel="noreferrer">{project.name}<ArrowUpRight size={13} aria-hidden="true" /></a><span>{project.category}</span></li>)}</ul></div>
+      <div className="about-focus"><p className="eyebrow">TECHNICAL FOCUS</p><ul><li>Full-Stack Development</li><li>Backend Engineering</li><li>Applied AI</li></ul></div>
+    </div>
+    <p className="about-credentials"><strong>8.79/10 CGPA</strong><span>B.E. Computer Engineering</span><i aria-hidden="true">·</i><strong>NPTEL Elite</strong><span>Introduction to Machine Learning · IIT Madras · Top 1%</span></p>
+    </Reveal>
+  </div></section>;
 }
 
 export function ContactSection() {
