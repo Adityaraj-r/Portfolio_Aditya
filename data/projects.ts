@@ -181,7 +181,15 @@ export const projects: Project[] = [
     decisions: ["Checked authentication, roles, and record ownership inside Server Actions.", "Validated eligibility, registration deadlines, resume presence, and duplicate applications before submission.", "Added Supabase database access policies and limited application update permissions.", "Kept Gemini resume feedback server-side and validated the returned response structure."],
     engineeringChallenge: "Student and staff actions need distinct access rules. Server Actions verify the caller and record ownership, application rules check eligibility and deadlines, and database migrations define additional access controls. The inspected lifecycle workflows still require runtime verification.",
     technologies: ["Next.js", "React.js", "JavaScript", "Supabase", "PostgreSQL", "Tailwind CSS", "Gemini"],
-    images: [],
+    images: [
+      {
+        src: "/projects/placement-portal-dashboard.png",
+        alt: "College Placement Portal dashboard overview with student, company, placement drive, and application management screens.",
+        width: 1672,
+        height: 941,
+        caption: "Dashboard overview of student management, company records, placement drives, and application tracking.",
+      },
+    ],
     github: "https://github.com/Adityaraj-r/placement-portal",
     featured: true,
   },
