@@ -146,7 +146,14 @@ img { max-width: 100%; }
 .project-demo:hover { color: var(--blue); }
 .icon-link { min-height: 40px; min-width: 40px; display: grid; place-items: center; color: var(--text-secondary); border: 1px solid var(--border); border-radius: 6px; }
 .icon-link:hover { color: var(--accent); border-color: #69e6b180; }
-.projects-more { display: flex; justify-content: flex-end; margin-top: 24px; }
+.project-expansion { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 16px; width: 100%; min-width: 0; }
+.project-expansion-content { width: 100%; min-width: 0; overflow: hidden; }
+.project-expansion-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; align-items: stretch; }
+.project-expansion-button { display: flex; min-height: 68px; width: 100%; align-items: center; justify-content: center; gap: 12px; padding: 12px 18px; border: 1px solid #69e6b180; border-radius: 9px; background: #69e6b108; color: var(--text); transition: background .2s, border-color .2s, color .2s; }
+.project-expansion-button:hover { border-color: var(--accent); background: #69e6b112; color: var(--accent); }
+.project-expansion-label { font-size: 14px; font-weight: 600; }
+.project-expansion-count { color: var(--text-secondary); font-size: 11px; }
+.project-expansion-button svg { color: var(--accent); }
 .project-engineer-details { display: none; margin-bottom: 20px; border-top: 1px solid var(--border); }
 .portfolio-shell[data-presentation-mode=engineer] .project-engineer-details { display: block; }
 .project-engineer-details summary { min-height: 44px; padding-block: 10px; font-size: 12px; color: var(--accent); cursor: pointer; }
@@ -303,7 +310,7 @@ img { max-width: 100%; }
   .sketch-description { min-height: 102px; }
   .hero-credentials { grid-template-columns: 1fr 1fr; gap: 24px; }
   .hero-credentials li:nth-child(3) { border: 0; padding-left: 0; }
-  .project-list, .project-index { gap: 22px; }
+  .project-list, .project-index, .project-expansion-grid { gap: 22px; }
   .project-actions { gap: 12px; }
   .project-info h3 { font-size: 26px; }
   .project-subtitle { font-size: 13px; }
@@ -356,6 +363,7 @@ img { max-width: 100%; }
   .work-toolbar > span { font-size: 8px; }
   .presentation-mode button { min-height: 38px; }
   .project-list, .project-index { grid-template-columns: 1fr; gap: 25px; }
+  .project-expansion-grid { grid-template-columns: 1fr; gap: 25px; }
   .project-info { padding: 23px 24px 22px; }
   .project-info h3 { font-size: 29px; }
   .project-subtitle { font-size: 14px; }

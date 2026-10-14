@@ -5,6 +5,7 @@ A recruiter-focused portfolio for Aditya Raj, Computer Engineering student and F
 ## Features
 
 - Responsive homepage with experience, projects, skills, certifications, education, about, and contact sections
+- Homepage features TalentFlow HRMS, SyncSpace, and DocAI Brain by default, with an accessible control to expand the same project grid to all five projects
 - Image-led project index and statically generated case study pages for TalentFlow HRMS, DocAI Brain, EchoGuard, SyncSpace, and Placement Portal
 - Ten optimized local project visuals, accessible galleries, and recruiter/engineer presentation modes
 - Resume view and download links

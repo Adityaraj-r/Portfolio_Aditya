@@ -22,6 +22,7 @@ export type Project = {
   github?: string;
   demo?: string;
   featured: boolean;
+  featuredOrder?: number;
   showcaseOnly?: boolean;
 };
 
@@ -65,6 +66,7 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/Adityaraj-r/talentflow-hrms",
     featured: true,
+    featuredOrder: 1,
   },
   {
     slug: "docai-brain",
@@ -99,6 +101,7 @@ export const projects: Project[] = [
     github: "https://github.com/Adityaraj-r/DocAi",
     demo: "https://docbrain-ai-frontend.vercel.app/",
     featured: true,
+    featuredOrder: 3,
   },
   {
     slug: "echoguard",
@@ -131,7 +134,7 @@ export const projects: Project[] = [
       },
     ],
     github: "https://github.com/Adityaraj-r/echoguard",
-    featured: true,
+    featured: false,
   },
   {
     slug: "syncspace",
@@ -166,6 +169,7 @@ export const projects: Project[] = [
     github: "https://github.com/Adityaraj-r/SyncSpace",
     demo: "https://syncspace-0a4n.onrender.com/login",
     featured: true,
+    featuredOrder: 2,
   },
   {
     slug: "placement-portal",
@@ -191,6 +195,6 @@ export const projects: Project[] = [
       },
     ],
     github: "https://github.com/Adityaraj-r/placement-portal",
-    featured: true,
+    featured: false,
   },
 ];

@@ -1,5 +1,4 @@
 import { ArrowRight, ArrowDownRight, ArrowUpRight, Download, Github, Linkedin, Mail } from "lucide-react";
-import Link from "next/link";
 import { Reveal } from "@/components/animations";
 import { HeroVisual } from "@/components/hero-visual";
 import { PresentationModeSwitch } from "@/components/presentation-mode";
@@ -9,6 +8,7 @@ import { projects } from "@/data/projects";
 import { skillGroups } from "@/data/skills";
 import { site } from "@/lib/site";
 import { ProjectCard } from "@/components/project-card";
+import { ProjectExpansion } from "@/components/project-expansion";
 
 function SectionHeading({ eyebrow, title, intro }: { eyebrow: string; title: string; intro?: string }) {
   return <div className="section-heading"><p className="eyebrow">{eyebrow}</p><h2>{title}</h2>{intro && <p className="section-intro">{intro}</p>}</div>;
@@ -46,11 +46,14 @@ export function ExperienceSection() {
 }
 
 export function ProjectsSection() {
-  const featuredProjects = projects.filter((project) => project.featured);
+  const featuredProjects = projects
+    .filter((project) => project.featured)
+    .sort((a, b) => (a.featuredOrder ?? Number.MAX_SAFE_INTEGER) - (b.featuredOrder ?? Number.MAX_SAFE_INTEGER));
+  const additionalProjects = projects.filter((project) => !project.featured);
   return (
     <section id="projects" className="section section-anchor">
       <div className="container">
-        <SectionHeading eyebrow="01 / SELECTED WORK" title="Built to solve something." intro="Document intelligence, real-time connections, and the engineering that makes them work." />
+        <SectionHeading eyebrow="01 / SELECTED WORK" title="Built to solve something." intro="Three featured projects across HR technology, real-time connections, and document intelligence. Expand the collection to explore all five." />
         <div className="work-toolbar">
           <span>{String(featuredProjects.length).padStart(2, "0")} SELECTED PROJECTS / FULL-STACK + AI</span>
           <PresentationModeSwitch />
@@ -61,8 +64,16 @@ export function ProjectsSection() {
               <ProjectCard project={project} index={index} />
             </Reveal>
           ))}
+          {additionalProjects.length > 0 && (
+            <ProjectExpansion additionalCount={additionalProjects.length} featuredCount={featuredProjects.length}>
+              {additionalProjects.map((project, index) => (
+                <Reveal key={project.slug} delay={(index % 2) * 0.06}>
+                  <ProjectCard project={project} index={featuredProjects.length + index} />
+                </Reveal>
+              ))}
+            </ProjectExpansion>
+          )}
         </div>
-        <div className="projects-more"><Link className="text-link" href="/projects">View all projects <ArrowRight size={15} /></Link></div>
       </div>
     </section>
   );
