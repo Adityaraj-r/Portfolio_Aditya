@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ArrowDown, ArrowUpRight, Braces, Database, AudioLines, Layers3 } from "lucide-react";
 
 const disciplines = [
-  { name: "Full-stack", icon: Braces, title: "From interface to infrastructure.", stack: "React · Next.js · Node.js · Express", note: "Reusable interfaces. Connected APIs. Persistent data.", nodes: ["Interface", "API & services", "Database"], details: ["Thoughtful user experiences", "The logic behind the screen", "Data that connects it all"] },
+  { name: "Full-stack", icon: Braces, title: "From interface to infrastructure", stack: "React · Next.js · Node.js · Express", note: "Reusable interfaces. Connected APIs. Persistent data.", nodes: ["Interface", "API & services", "Database"], details: ["Thoughtful user experiences", "The logic behind the screen", "Data that connects it all"] },
   { name: "Applied AI", icon: AudioLines, title: "From data to useful intelligence.", stack: "PyTorch · FastAPI · LangGraph", note: "Audio classification and document question answering.", nodes: ["Input & context", "Model & retrieval", "Inference"], details: ["Audio signals and documents", "Representations with meaning", "Answers in the application"] },
   { name: "Backend", icon: Database, title: "The logic behind the experience.", stack: "REST APIs · JWT · MongoDB · SQL", note: "Authentication, database workflows, and connected services.", nodes: ["Request", "Service", "Storage"], details: ["Validate and authenticate", "Connect business workflows", "Read, write, and retrieve"] },
 ];

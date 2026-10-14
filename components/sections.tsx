@@ -23,9 +23,11 @@ export function Hero() {
     <div className="hero-topline"><span><i /> OPEN TO SOFTWARE ENGINEERING OPPORTUNITIES</span><span>PUNE, INDIA ↗</span></div>
     <div className="hero-inner">
       <Reveal className="hero-content"><p className="eyebrow hero-eyebrow">FULL-STACK DEVELOPER / COMPUTER ENGINEERING</p>
-        <h1>Aditya Raj<span className="accent">.</span></h1>
-        <p className="hero-lede">Thoughtful code.<br /><span>Useful software.</span></p>
-        <p className="hero-copy">I’m a Computer Engineering undergraduate with two full-stack internships. I build thoughtful interfaces, dependable backend services, and applications that put AI to work.</p>
+        <h1>Aditya Raj</h1>
+        <p className="hero-lede">Building Real-World <span>Software</span></p>
+        <p className="hero-subheadline">From Full-Stack Systems to Applied AI</p>
+        <p className="hero-copy">Computer Engineering undergraduate with full-stack internship experience, building web applications, backend systems, and AI-powered projects.</p>
+        <ul className="hero-focus" aria-label="Technical focus areas"><li>Full Stack</li><li>Backend Engineering</li><li>Applied AI</li></ul>
         <div className="hero-actions"><a className="button button-primary" href="#projects">Explore my work <ArrowDownRight /></a><a className="button button-secondary" href={site.resume} download><Download size={16} /> Download resume</a></div>
         <div className="hero-links"><a href={site.github} target="_blank" rel="noreferrer"><Github size={16} /> GitHub <ArrowUpRight size={13} /></a><a href={site.linkedin} target="_blank" rel="noreferrer"><Linkedin size={16} /> LinkedIn <ArrowUpRight size={13} /></a><a href={`mailto:${site.email}`}><Mail size={16} /> Let’s talk <ArrowUpRight size={13} /></a></div>
       </Reveal>
