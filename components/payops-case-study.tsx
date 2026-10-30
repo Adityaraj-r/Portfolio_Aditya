@@ -23,13 +23,21 @@ const engineeringChallenges = [
   ["Monetary precision", "Amounts are integer paise end to end, avoiding binary floating-point calculations for financial values."],
 ] as const;
 
+const screenshotRequests = [
+  { title: "Payment detail", description: "Payment lifecycle, refund status, fee and net amounts, provider events, and balanced debit and credit journal entries." },
+  { title: "Operations overview", description: "Payment volume, transaction outcomes, simulated ledger totals, and recent payment activity." },
+  { title: "Webhook delivery", description: "Event delivery, attempt history, retry status, and dead-letter recovery." },
+  { title: "Risk and settlement", description: "Risk evaluation, flagged transactions, simulated settlement batches, and a reconciliation preview." },
+  { title: "Hosted checkout", description: "PayOps branding, synthetic customer details, and a clearly visible Test Mode label." },
+] as const;
+
 function ScreenshotPlaceholder({ title, description }: { title: string; description: string }) {
   return <div className="payops-screenshot-placeholder" role="note">
     <span className="payops-placeholder-icon"><CircleDollarSign size={21} aria-hidden="true" /></span>
-    <p className="eyebrow">SCREENSHOT PENDING</p>
+    <p className="eyebrow">AUTHENTIC APP CAPTURE PENDING</p>
     <h3>{title}</h3>
     <p>{description}</p>
-    <small>Awaiting a fresh PayOps-branded capture in test mode.</small>
+    <small>Retained as a placeholder: PayOps services are not running, so this screen could not be captured.</small>
   </div>;
 }
 
@@ -39,17 +47,13 @@ export function PayOpsCaseStudy() {
     <section id="overview" className="payops-section payops-overview">
       <div className="payops-section-heading"><p className="eyebrow">01 / OVERVIEW</p><h2>Reliability around the payment</h2></div>
       <div className="payops-overview-grid">
-        <div><p className="payops-recruiter-only">PayOps demonstrates how payment software can protect transaction records when requests are repeated, provider updates arrive late, or a refund competes with another. It connects payment activity to balanced accounts and recoverable operations, with financial activity simulated for learning.</p><p className="payops-engineer-only">The API, state machine, idempotency middleware, MongoDB transaction boundaries, double-entry journal, outbox relay, and Redis-backed workers expose the consistency points behind retries, provider events, refunds, and delivery recovery.</p><p>Its default provider is a deliberately unreliable mock bank. Razorpay is an optional adapter for <strong>test mode</strong>. The repository describes simulated workflows; it is not a live payment processor.</p></div>
+        <div><p className="payops-recruiter-only">PayOps demonstrates how payment software can protect transaction records when requests are repeated, provider updates arrive late, or a refund competes with another. It connects payment activity to balanced accounts and recoverable operations, with payment and settlement workflows simulated by default.</p><p className="payops-engineer-only">The API, state machine, idempotency middleware, MongoDB transaction boundaries, double-entry journal, outbox relay, and Redis-backed workers expose the consistency points behind retries, provider events, refunds, and delivery recovery.</p><p>PayOps uses simulated payment and settlement workflows by default. Its optional Razorpay adapter supports provider integration and can initiate real transactions when configured with live credentials. Test credentials should be used for evaluation. The platform does not execute bank payouts.</p></div>
         <aside className="payops-contribution"><p className="eyebrow">DOCUMENTED CONTRIBUTIONS</p><ul><li>Checkout capability handling and request-log redaction</li><li>Webhook delivery recovery with stable jobs and leases</li><li>Application-level guards for posted ledger entries</li><li>Operations dashboard clarity and responsive workflow feedback</li></ul><p>These are supported by the repository’s provenance audit and commit-level changelog; they describe specific contributions, not sole authorship of the whole platform.</p></aside>
       </div>
-      <div className="payops-screenshot-grid">
-        <ScreenshotPlaceholder title="Payment detail" description="Payment timeline, provider-event handling, risk result, and journal view." />
-        <ScreenshotPlaceholder title="Operations overview" description="Dashboard summary and payment operations in the current PayOps branding." />
-        <ScreenshotPlaceholder title="Ledger view" description="A real application capture of journal lines and balance verification." />
-        <ScreenshotPlaceholder title="Webhook operations" description="Delivery attempts, retry state, dead-letter recovery, and replay controls." />
-        <ScreenshotPlaceholder title="Risk + settlement" description="Risk decisions and simulated settlement with its allocation limitation visible." />
+      <div className="payops-screenshot-grid" aria-label="PayOps application screenshots awaiting authentic test-mode captures">
+        {screenshotRequests.map(({ title, description }) => <ScreenshotPlaceholder key={title} title={title} description={description} />)}
       </div>
-      <p className="payops-asset-note">The repository currently includes payment, overview, and checkout screenshots, but these show legacy Onyx branding and a demo merchant identity. No webhook or risk/settlement dashboard captures were present. They are intentionally not displayed or altered; the placeholders will remain until clean test-mode captures are supplied.</p>
+      <p className="payops-asset-note">The PayOps repository has payment, overview, and checkout images, but they still carry the project’s previous branding. No authentic webhook or risk-and-settlement captures are available. The supplied dashboard composite is useful as a reference, but it is not verified as a direct capture from the running application and is not presented as one. No legacy-branded images are used in this case study.</p>
     </section>
 
     <section id="principles" className="payops-section payops-principles">
@@ -121,7 +125,7 @@ export function PayOpsCaseStudy() {
         <div className="payops-architecture-link">Outbox relay publishes stable queue jobs <ArrowDown size={15} aria-hidden="true" /></div>
         <ArchitectureNode label="Redis + BullMQ workers" detail="Queue state, retries, provider operations, and delivery work" icon={RotateCcw} />
         <div className="payops-architecture-link">Workers persist outcomes and call external targets <ArrowDown size={15} aria-hidden="true" /></div>
-        <div className="payops-architecture-clients"><ArchitectureNode label="Mock bank" detail="Default simulated provider; duplicate and reordered events" icon={GitBranch} /><ArchitectureNode label="Razorpay test adapter" detail="Optional provider test mode" icon={CircleDollarSign} /><ArchitectureNode label="Merchant webhook" detail="Signed delivery, retry, dead-letter, replay" icon={ArrowLeftRight} /></div>
+        <div className="payops-architecture-clients"><ArchitectureNode label="Mock bank" detail="Default simulated provider; duplicate and reordered events" icon={GitBranch} /><ArchitectureNode label="Razorpay adapter" detail="Optional; use test credentials for evaluation" icon={CircleDollarSign} /><ArchitectureNode label="Merchant webhook" detail="Signed delivery, retry, dead-letter, replay" icon={ArrowLeftRight} /></div>
       </div>
       <p className="payops-caveat">The database transaction requires a MongoDB replica set. Redis holds queue state and supports fast paths; durable outbox and delivery records live in MongoDB.</p>
     </section>
@@ -133,7 +137,7 @@ export function PayOpsCaseStudy() {
 
     <section id="limits" className="payops-section payops-limits">
       <div className="payops-section-heading"><p className="eyebrow">09 / LIMITATIONS & NEXT STEPS</p><h2>Educational simulation, not a payment service</h2></div>
-      <ul><li>Payment-provider workflows use a mock bank by default; optional Razorpay integration should be evaluated only with test credentials.</li><li>Settlement and payout records are simulated ledger entries. The platform does not make bank payouts or move merchant funds.</li><li>Settlement is a balance sweep with a documented allocation limitation, not a complete per-payment settlement workflow.</li><li>Reconciliation compares application/provider observations and ledger integrity; there is no bank statement feed.</li><li>Webhook delivery is at least once, and journal safeguards in the application do not prevent direct database administrator writes.</li><li>The PayOps repository acknowledges studying patterns from other projects; its notices and acknowledgements remain part of the project context.</li></ul>
+      <ul><li>Payment-provider workflows use a mock bank by default; the optional Razorpay adapter can initiate real transactions with live credentials, so test credentials should be used for evaluation.</li><li>Settlement and payout records are simulated ledger entries; the platform does not execute bank payouts.</li><li>Settlement is a balance sweep with a documented allocation limitation, not a complete per-payment settlement workflow.</li><li>Reconciliation compares application/provider observations and ledger integrity; there is no bank statement feed.</li><li>Webhook delivery is at least once, and journal safeguards in the application do not prevent direct database administrator writes.</li><li>The PayOps repository acknowledges studying patterns from other projects; its notices and acknowledgements remain part of the project context.</li></ul>
       <p className="payops-license-note">Project source and implementation details: <a href="https://github.com/Adityaraj-r/PayOps" target="_blank" rel="noreferrer">PayOps repository <ArrowLeftRight size={13} aria-hidden="true" /></a>.</p>
     </section>
   </div>;
