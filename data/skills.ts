@@ -4,6 +4,7 @@ export const skillGroups = [
   { name: "Backend", skills: ["Node.js", "Express.js", "FastAPI", "RESTful APIs", "JWT Authentication"] },
   { name: "Databases", skills: ["SQL", "MySQL", "PostgreSQL", "MongoDB", "Supabase", "Relational Databases", "ChromaDB", "Redis"] },
   { name: "AI / ML", skills: ["PyTorch", "CNNs", "Audio Classification", "MFCC", "Mel-Spectrograms", "LangChain", "LangGraph", "RAG"] },
+  { name: "Financial Systems & Engineering Concepts", skills: ["Payment Lifecycle Management", "Double-Entry Accounting", "Transaction Idempotency", "Ledger Integrity", "Refund Concurrency", "Event-Driven Processing", "Exception Handling", "Settlement Concepts"] },
   { name: "Core CS", skills: ["Data Structures & Algorithms", "Complexity Analysis", "OOP", "Object-Oriented Design", "Operating Systems", "DBMS"] },
   { name: "Tools", skills: ["Git", "GitHub", "Postman", "VS Code", "Linux", "Docker"] },
 ] as const;

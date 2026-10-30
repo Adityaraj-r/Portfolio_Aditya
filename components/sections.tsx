@@ -27,8 +27,8 @@ export function Hero() {
         <h1>Aditya Raj</h1>
         <p className="hero-lede">Building Real-World <span>Software</span></p>
         <p className="hero-subheadline">From Full-Stack Systems to Applied AI</p>
-        <p className="hero-copy">Computer Engineering undergraduate with full-stack internship experience, building web applications, backend systems, and AI-powered projects.</p>
-        <ul className="hero-focus" aria-label="Technical focus areas"><li>Full Stack</li><li>Backend Engineering</li><li>Applied AI</li></ul>
+        <p className="hero-copy">Computer Engineering undergraduate with full-stack development experience, building backend systems, AI-powered applications, and financial workflow platforms focused on transaction integrity and operational reliability.</p>
+        <ul className="hero-focus" aria-label="Technical focus areas"><li>Full Stack</li><li>Backend Engineering</li><li>Applied AI</li><li>Financial Systems</li></ul>
         <div className="hero-actions"><a className="button button-primary" href="#projects">Explore my work <ArrowDownRight /></a><a className="button button-secondary" href={site.resume} download><Download size={16} /> Download resume</a></div>
         <div className="hero-links"><a href={site.github} target="_blank" rel="noreferrer"><Github size={16} /> GitHub <ArrowUpRight size={13} /></a><a href={site.linkedin} target="_blank" rel="noreferrer"><Linkedin size={16} /> LinkedIn <ArrowUpRight size={13} /></a><a href={`mailto:${site.email}`}><Mail size={16} /> Let’s talk <ArrowUpRight size={13} /></a></div>
       </Reveal>
@@ -56,7 +56,7 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="section section-anchor">
       <div className="container">
-        <SectionHeading eyebrow="01 / SELECTED WORK" title="Built to solve something." intro="Three featured projects across HR technology, real-time connections, and document intelligence. Expand the collection to explore all five." />
+        <SectionHeading eyebrow="01 / SELECTED WORK" title="Built to solve something." intro="Four featured projects across financial systems, HR technology, real-time connections, and document intelligence. Expand the collection to explore all six." />
         <div className="work-toolbar">
           <span>{String(featuredProjects.length).padStart(2, "0")} SELECTED PROJECTS / FULL-STACK + AI</span>
           <PresentationModeSwitch />
@@ -82,7 +82,7 @@ export function ProjectsSection() {
   );
 }
 export function SkillsSection() {
-  return <section id="skills" className="section section-alt section-anchor"><div className="container"><SectionHeading eyebrow="04 / TOOLKIT" title="Technical skills." intro="Tools and concepts used across my internships, projects, and computer engineering studies." /><div className="skills-grid">{skillGroups.map((group) => <Reveal key={group.name}><article className="skill-group"><h3>{group.name}</h3><Tags items={group.skills} /></article></Reveal>)}</div></div></section>;
+  return <section id="skills" className="section section-alt section-anchor"><div className="container"><SectionHeading eyebrow="04 / TOOLKIT" title="Technical skills." intro="Tools and concepts used across my internships, projects, and computer engineering studies." /><div className="skills-grid">{skillGroups.map((group) => <Reveal key={group.name}><article className="skill-group"><h3>{group.name}</h3>{group.name === "Financial Systems & Engineering Concepts" && <p className="financial-skills-context">Project-based concepts explored in PayOps.</p>}<Tags items={group.skills} /></article></Reveal>)}</div></div></section>;
 }
 
 export function CertificationsSection() {

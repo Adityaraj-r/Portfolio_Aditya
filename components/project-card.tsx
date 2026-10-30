@@ -19,7 +19,10 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         <p className="eyebrow"><span>{project.category}</span><span>{String(index + 1).padStart(2, "0")}</span></p>
         <h3><Link href={`/projects/${project.slug}`}>{project.name}<span className="accent">.</span></Link></h3>
         <p className="project-subtitle">{project.subtitle}</p>
-        <p className="project-description">{project.description}</p>
+        {project.recruiterDescription && project.engineerDescription ? <>
+          <p className="project-description payops-recruiter-copy">{project.recruiterDescription}</p>
+          <p className="project-description payops-engineer-copy">{project.engineerDescription}</p>
+        </> : <p className="project-description">{project.description}</p>}
         <Tags items={project.technologies} />
         {!project.showcaseOnly && <details className="project-engineer-details">
           <summary>Engineering notes</summary>

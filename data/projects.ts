@@ -24,9 +24,41 @@ export type Project = {
   featured: boolean;
   featuredOrder?: number;
   showcaseOnly?: boolean;
+  recruiterDescription?: string;
+  engineerDescription?: string;
 };
 
 export const projects: Project[] = [
+  {
+    slug: "payops",
+    name: "PayOps",
+    category: "FinTech / Backend Engineering / Financial Systems",
+    subtitle: "Payment Operations & Reliability Platform",
+    description: "An educational payment-systems platform implementing financial transaction lifecycle management, idempotent payment and refund operations, balanced double-entry accounting, and reliable asynchronous webhook processing. Built with Node.js, MongoDB, Redis, and BullMQ, with simulated settlement workflows and an operations dashboard for monitoring payment activity, ledger entries, and webhook delivery.",
+    recruiterDescription: "An educational financial-workflow platform focused on accurate payment and refund records, duplicate-request protection, and recoverable operations. Payment, settlement, and payout activity is simulated.",
+    engineerDescription: "Explores atomic idempotency claims with response replay, MongoDB transaction boundaries, conditional refund reservations, integer-paise accounting, a transactional outbox, and Redis-backed BullMQ workers.",
+    summary: "PayOps is an educational payment operations platform for studying retries, provider failures, delayed webhooks, and ledger consistency. Merchants create payments through an API, customers use hosted checkout, and simulated provider events exercise the payment lifecycle. MongoDB transactions coordinate payment state, double-entry journal entries, and outbox records; Redis and BullMQ workers handle asynchronous processing and retryable delivery.",
+    architecture: ["Merchant API and hosted customer checkout", "Express API with idempotency, validation, and risk checks", "MongoDB replica set: payment state, double-entry journal, and transactional outbox", "Redis-backed BullMQ queues and background workers", "Mock bank by default; optional Razorpay test-mode adapter", "Signed merchant webhooks with retry and operator replay"],
+    features: ["Atomic idempotency claims with stored-response replay and payload mismatch rejection", "Payment state machine rejects invalid and backward transitions", "Optimistic concurrency on versioned payment updates", "Double-entry journal with per-merchant accounts and ledger integrity checks", "Integer paise monetary calculations", "Conditional refund reservations protect the captured amount under concurrency", "MongoDB transaction couples payment updates, ledger postings, and outbox events", "Redis and BullMQ background work with webhook retries, dead-letter state, and replay", "Provider-event uniqueness handles duplicate webhook events", "Rule-based risk scoring with velocity counters and review/block decisions", "Simulated balance-sweep settlement and application/provider reconciliation"],
+    problem: "Retries, concurrent refunds, provider event ordering, worker recovery, and exact financial records require explicit invariants rather than optimistic assumptions.",
+    solution: "The platform demonstrates those invariants with database uniqueness and transactions, a payment state machine, balanced integer-minor-unit journal entries, and durable outbox records processed by recoverable workers.",
+    decisions: [
+      "MongoDB stores the authoritative idempotency claim; Redis is a response-cache fast path, and a unique index coordinates concurrent first requests.",
+      "A request fingerprint binds an idempotency key to its method, path, and body; successful responses are persisted before being returned.",
+      "Versioned conditional updates provide optimistic concurrency for payment transitions.",
+      "Refund amounts are reserved in a conditional transaction before the provider operation is queued; ambiguous provider outcomes retain the reservation for review.",
+      "Each journal entry validates positive integer paise amounts and equal debits and credits; balances are recomputed from journal lines to detect drift.",
+      "An outbox record is committed with payment and ledger changes; a recovery scan can re-enqueue pending deliveries using stable job IDs.",
+      "Webhook delivery is at least once, not exactly once; consumers must verify signatures and deduplicate event IDs.",
+      "Settlement is a simulated balance sweep with a documented allocation limitation; it is not a bank payout or per-payment settlement proof.",
+    ],
+    engineeringChallenge: "The repository’s provenance audit documents specific contributions rather than sole authorship of the inherited platform: checkout-capability and request-log hardening, webhook-delivery recovery using stable jobs and leases, application-level journal mutation guards, and operations-dashboard improvements. The case study distinguishes those changes from broader existing platform behavior.",
+    technologies: ["Node.js", "Express.js", "MongoDB", "Redis", "BullMQ", "React", "Vite", "Docker", "Razorpay Test Mode"],
+    images: [],
+    github: "https://github.com/Adityaraj-r/PayOps",
+    featured: true,
+    featuredOrder: 1,
+  },
   {
     slug: "talentflow-hrms",
     name: "TalentFlow HRMS",
@@ -66,7 +98,7 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/Adityaraj-r/talentflow-hrms",
     featured: true,
-    featuredOrder: 1,
+    featuredOrder: 2,
   },
   {
     slug: "docai-brain",
@@ -101,7 +133,7 @@ export const projects: Project[] = [
     github: "https://github.com/Adityaraj-r/DocAi",
     demo: "https://docbrain-ai-frontend.vercel.app/",
     featured: true,
-    featuredOrder: 3,
+    featuredOrder: 4,
   },
   {
     slug: "echoguard",
@@ -169,7 +201,7 @@ export const projects: Project[] = [
     github: "https://github.com/Adityaraj-r/SyncSpace",
     demo: "https://syncspace-0a4n.onrender.com/login",
     featured: true,
-    featuredOrder: 2,
+    featuredOrder: 3,
   },
   {
     slug: "placement-portal",

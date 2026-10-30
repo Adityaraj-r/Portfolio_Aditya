@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Github } from "lucide-react";
 import { JsonLd } from "@/components/json-ld";
 import { ProjectGallery } from "@/components/project-gallery";
+import { PayOpsCaseStudy } from "@/components/payops-case-study";
 import { Tags } from "@/components/ui";
 import { projects } from "@/data/projects";
 import { site } from "@/lib/site";
@@ -51,6 +52,7 @@ export default async function ProjectPage({ params }: Props) {
           <p className="case-lede">{project.description}</p>
           <Tags items={project.technologies} /><div className="project-actions">{project.github && <a className="button button-secondary" href={project.github} target="_blank" rel="noreferrer"><Github size={16} /> Source code</a>}{project.demo && <a className="button button-primary" href={project.demo} target="_blank" rel="noreferrer">Live demo <ArrowUpRight size={16} /></a>}</div>
         </header>
+        {project.slug === "payops" ? <PayOpsCaseStudy /> : <>
         <ProjectGallery slug={project.slug} name={project.name} images={project.images} />
         <div className="case-layout">
           <aside className="case-aside" aria-label="On this page">
@@ -63,6 +65,7 @@ export default async function ProjectPage({ params }: Props) {
             <section id="decisions"><p className="eyebrow">ENGINEERING</p><h2>Technical decisions</h2>{project.engineeringChallenge && <><h3>Challenge addressed</h3><p>{project.engineeringChallenge}</p></>}<ul className="case-bullets">{project.decisions.map((decision) => <li key={decision}>{decision}</li>)}</ul><h3>Technology stack</h3><Tags items={project.technologies} /></section>
           </div>
         </div>
+        </>}
         <Link className="next-project" href={`/projects/${nextProject.slug}`}><span><small>NEXT PROJECT</small><strong>{nextProject.name}</strong></span><ArrowRight size={18} /></Link>
       </div>
     </main>
