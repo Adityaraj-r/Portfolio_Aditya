@@ -27,7 +27,7 @@ export function Hero() {
         <h1>Aditya Raj</h1>
         <p className="hero-lede">Building Real-World <span>Software</span></p>
         <p className="hero-subheadline">From Full-Stack Systems to Applied AI</p>
-        <p className="hero-copy">Computer Engineering undergraduate with full-stack development experience, building backend systems, AI-powered applications, and financial workflow platforms focused on transaction integrity and operational reliability.</p>
+        <p className="hero-copy">Computer Engineering undergraduate with two full-stack internships. I build web applications, backend systems, and applied AI projects.</p>
         <ul className="hero-focus" aria-label="Technical focus areas"><li>Full Stack</li><li>Backend Engineering</li><li>Applied AI</li><li>Financial Systems</li></ul>
         <div className="hero-actions"><a className="button button-primary" href="#projects">Explore my work <ArrowDownRight /></a><a className="button button-secondary" href={site.resume} download><Download size={16} /> Download resume</a></div>
         <div className="hero-links"><a href={site.github} target="_blank" rel="noreferrer"><Github size={16} /> GitHub <ArrowUpRight size={13} /></a><a href={site.linkedin} target="_blank" rel="noreferrer"><Linkedin size={16} /> LinkedIn <ArrowUpRight size={13} /></a><a href={`mailto:${site.email}`}><Mail size={16} /> Let’s talk <ArrowUpRight size={13} /></a></div>
@@ -101,7 +101,7 @@ export function AboutSection() {
   return <section id="about" className="section section-anchor"><div className="container about-layout">
     <SectionHeading eyebrow="03 / ABOUT" title="From Learning to Building Real-World Software" intro="I’m Aditya Raj, a Computer Engineering undergraduate turning technical concepts into practical software." />
     <Reveal className="about-reveal"><div className="about-overview">
-      <div className="about-copy"><p>Across two full-stack internships at Coding Savvy and Indux Technology, I’ve built reusable React components, integrated REST APIs, and worked with database-backed application workflows.</p><p>My projects explore real-time communication, document intelligence with retrieval-augmented generation, and deep-learning-based audio classification.</p></div>
+      <div className="about-copy"><p>Across two full-stack internships at Coding Savvy and Indux Technology, I’ve built reusable React components, integrated REST APIs, and worked with database-backed application workflows.</p><p>My projects span payment operations and HR workflows, real-time communication, document intelligence with retrieval-augmented generation, and deep-learning audio classification.</p></div>
       <div className="about-journey" aria-label="Education and internship experience">
         <article className="about-journey-item"><span className="about-period">2023 — 2027 <i>EDUCATION</i></span><div><h3>Computer Engineering</h3><p>RMD Sinhgad Technical Institute</p></div></article>
         <article className="about-journey-item"><span className="about-period">2026 <i>INTERNSHIPS</i></span><div><h3>Full-Stack Development</h3><p>Coding Savvy · Jan–Feb<br />Indux Technology · May–Sep</p></div></article>

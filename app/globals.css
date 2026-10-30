@@ -525,6 +525,10 @@ img { max-width: 100%; }
   .case-layout { grid-template-columns: 150px minmax(0, 1fr); gap: 35px; }
   .next-project { margin-left: 185px; }
 }
+@media (max-width: 800px) {
+  .hero-inner { grid-template-columns: minmax(0, 1fr); gap: 35px; padding-block: 48px 32px; }
+  .hero-content, .hero-recent-experience { width: min(100%, 640px); }
+}
 @media (max-width: 700px) {
   :root { --section-space: 72px; }
   .container { width: calc(100% - 40px); }
