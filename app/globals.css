@@ -405,7 +405,11 @@ img { max-width: 100%; }
 .payops-contribution ul, .payops-limits ul { margin: 0; padding-left: 17px; color: var(--text-secondary); font-size: 11px; line-height: 1.85; }
 .payops-contribution li::marker { color: var(--payops-copper-light); }
 .payops-contribution > p:last-child { margin: 12px 0 0; color: var(--muted); font-size: 10px; line-height: 1.7; }
-.payops-screenshot-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
+.payops-screenshot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
+.payops-screenshot { min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 9px; background: var(--bg-secondary); }
+.payops-screenshot img { display: block; width: 100%; height: auto; }
+.payops-screenshot figcaption { display: grid; gap: 5px; padding: 12px 14px; color: var(--text-secondary); font-size: 10px; line-height: 1.6; }
+.payops-screenshot figcaption strong { color: var(--text); font-size: 12px; font-weight: 500; }
 .payops-screenshot-placeholder { min-height: 205px; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; padding: 17px; border: 1px dashed #b97a3e66; border-radius: 9px; background: linear-gradient(145deg, #b97a3e0c, transparent 60%), var(--bg-secondary); }
 .payops-placeholder-icon { display: grid; place-items: center; width: 34px; height: 34px; margin-bottom: auto; border: 1px solid #b97a3e60; border-radius: 7px; color: var(--payops-copper-light); }
 .payops-screenshot-placeholder .eyebrow { margin: 13px 0 4px; color: var(--payops-copper-light); font-size: 8px; }

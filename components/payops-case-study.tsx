@@ -1,4 +1,5 @@
 import { Activity, ArrowDown, ArrowLeftRight, CircleDollarSign, Database, Gauge, GitBranch, Layers3, RotateCcw, ShieldCheck, Workflow } from "lucide-react";
+import Image from "next/image";
 
 const lifecycle = [
   { from: "Risk rules", to: "Blocked", note: "A blocked decision stops checkout." },
@@ -23,21 +24,32 @@ const engineeringChallenges = [
   ["Monetary precision", "Amounts are integer paise end to end, avoiding binary floating-point calculations for financial values."],
 ] as const;
 
-const screenshotRequests = [
-  { title: "Payment detail", description: "Payment lifecycle, refund status, fee and net amounts, provider events, and balanced debit and credit journal entries." },
-  { title: "Operations overview", description: "Payment volume, transaction outcomes, simulated ledger totals, and recent payment activity." },
-  { title: "Webhook delivery", description: "Event delivery, attempt history, retry status, and dead-letter recovery." },
-  { title: "Risk and settlement", description: "Risk evaluation, flagged transactions, simulated settlement batches, and a reconciliation preview." },
-  { title: "Hosted checkout", description: "PayOps branding, synthetic customer details, and a clearly visible Test Mode label." },
+const suppliedScreenshots = [
+  {
+    src: "/images/projects/payops/payops-payment-detail.png",
+    alt: "PayOps test-mode payment details showing payment lifecycle, a partial refund, fee and net amounts, provider events, and ledger entries.",
+    title: "Payment detail",
+    caption: "Supplied presentation screenshot: payment lifecycle, refund and fee details, provider events, ledger entries, and payment-level risk navigation.",
+    width: 1062,
+    height: 423,
+  },
+  {
+    src: "/images/projects/payops/payops-webhooks.png",
+    alt: "PayOps webhook delivery dashboard showing delivered, retrying, and dead-letter events, delivery attempts, event details, and processing flow.",
+    title: "Webhook delivery",
+    caption: "Supplied presentation screenshot: event statuses, attempts, retry and dead-letter queues, and the documented processing flow.",
+    width: 1536,
+    height: 1024,
+  },
 ] as const;
 
 function ScreenshotPlaceholder({ title, description }: { title: string; description: string }) {
   return <div className="payops-screenshot-placeholder" role="note">
     <span className="payops-placeholder-icon"><CircleDollarSign size={21} aria-hidden="true" /></span>
-    <p className="eyebrow">AUTHENTIC APP CAPTURE PENDING</p>
+    <p className="eyebrow">SCREENSHOT NEEDS REPLACEMENT</p>
     <h3>{title}</h3>
     <p>{description}</p>
-    <small>Retained as a placeholder: PayOps services are not running, so this screen could not be captured.</small>
+    <small>The supplied file is a cropped composite fragment and does not show this screen.</small>
   </div>;
 }
 
@@ -50,10 +62,15 @@ export function PayOpsCaseStudy() {
         <div><p className="payops-recruiter-only">PayOps demonstrates how payment software can protect transaction records when requests are repeated, provider updates arrive late, or a refund competes with another. It connects payment activity to balanced accounts and recoverable operations, with payment and settlement workflows simulated by default.</p><p className="payops-engineer-only">The API, state machine, idempotency middleware, MongoDB transaction boundaries, double-entry journal, outbox relay, and Redis-backed workers expose the consistency points behind retries, provider events, refunds, and delivery recovery.</p><p>PayOps uses simulated payment and settlement workflows by default. Its optional Razorpay adapter supports provider integration and can initiate real transactions when configured with live credentials. Test credentials should be used for evaluation. The platform does not execute bank payouts.</p></div>
         <aside className="payops-contribution"><p className="eyebrow">DOCUMENTED CONTRIBUTIONS</p><ul><li>Checkout capability handling and request-log redaction</li><li>Webhook delivery recovery with stable jobs and leases</li><li>Application-level guards for posted ledger entries</li><li>Operations dashboard clarity and responsive workflow feedback</li></ul><p>These are supported by the repository’s provenance audit and commit-level changelog; they describe specific contributions, not sole authorship of the whole platform.</p></aside>
       </div>
-      <div className="payops-screenshot-grid" aria-label="PayOps application screenshots awaiting authentic test-mode captures">
-        {screenshotRequests.map(({ title, description }) => <ScreenshotPlaceholder key={title} title={title} description={description} />)}
+      <div className="payops-screenshot-grid" aria-label="Supplied PayOps presentation screenshots and unavailable screen references">
+        {suppliedScreenshots.map(({ src, alt, title, caption, width, height }) => <figure className="payops-screenshot" key={src}>
+          <Image src={src} alt={alt} width={width} height={height} sizes="(max-width: 760px) 100vw, (max-width: 1100px) 50vw, 680px" loading="lazy" />
+          <figcaption><strong>{title}</strong><span>{caption}</span></figcaption>
+        </figure>)}
+        <ScreenshotPlaceholder title="Operations overview" description="Payment volume, transaction outcomes, simulated ledger totals, and recent payment activity." />
+        <ScreenshotPlaceholder title="Hosted checkout" description="PayOps branding, synthetic customer details, and a clearly visible Test Mode label." />
       </div>
-      <p className="payops-asset-note">The PayOps repository has payment, overview, and checkout images, but they still carry the project’s previous branding. No authentic webhook or risk-and-settlement captures are available. The supplied dashboard composite is useful as a reference, but it is not verified as a direct capture from the running application and is not presented as one. No legacy-branded images are used in this case study.</p>
+      <p className="payops-asset-note">These are supplied presentation screenshots, not new captures from the current running deployment. The payment detail screen includes payment-level risk context; no dedicated settlement or reconciliation screenshot was supplied. The overview and checkout files are retained in the asset folder but are not displayed because they contain cropped composite fragments instead of those screens.</p>
     </section>
 
     <section id="principles" className="payops-section payops-principles">
